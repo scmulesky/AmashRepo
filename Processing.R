@@ -17,18 +17,18 @@ df <- read.csv("Amash - Survey Questionnaire_May 8, 2020_10.43.csv")
 df <- df[-(1:2),]
 
 # Delete empty columns
-df <- df[, -(10:13)]
+df <- df[, -(9:12)]
 
 # Delete survey previews and those who didn't finish
 df <- df[df$Status != "Survey Preview", ]
-df <- df[df$Finished == "True", ]
+df <- df[df$Finished == "TRUE", ]
 
 # Function to handle factor-to-numeric conversions
 as.numeric.factor <- function(x) {as.numeric(levels(x))[x]}
 
 # Change factor variables to numeric
 names(df)
-df[,c(6, 17:21)] <- sapply(df[ ,c(6, 17:21)], as.numeric.factor)
+df[,c(15:19)] <- sapply(df[ ,c(15:19)], as.numeric.factor)
 
 # Separate responses from Q3 into two variables
 df <- df %>%
